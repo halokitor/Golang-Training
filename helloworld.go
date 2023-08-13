@@ -1,7 +1,12 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"runtime"
+)
 
-func main()  {
-	fmt.Println("Hello Golang!")
+func main() {
+	/* terminal print string */
+	fmt.Println("Hello Golang!\n", "The next words!")
+	fmt.Println(runtime.Version())
 }
