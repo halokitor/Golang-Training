@@ -1,4 +1,4 @@
-package pkgSelf
+package pkg
 
 import (
 	"math"
