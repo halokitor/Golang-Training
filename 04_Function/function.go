@@ -1,4 +1,4 @@
-package main
+package function
 
 import (
 	"fmt"
@@ -22,9 +22,11 @@ func split_(param float32) (x, y float32) {
 	return
 }
 
-func main() {
+func PrintFunc() {
+
+	fmt.Println("------------------------------------04_Function------------------------------------")
+
 	/* terminal print add result */
-	fmt.Println("Hello Golang!\n", "The next words!")
 	fmt.Println("add num is", addNum_(9, 8))
 
 	charA := "charA"
@@ -35,4 +37,7 @@ func main() {
 	fmt.Println("swap char reuslt", a, b, charA, charB)
 
 	fmt.Println(split_(8))
+
+	fmt.Println("-----------------------------------------------------------------------------------")
+
 }

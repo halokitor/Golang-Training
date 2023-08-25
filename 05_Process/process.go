@@ -1,4 +1,4 @@
-package main
+package process
 
 import (
 	"fmt"
@@ -78,7 +78,10 @@ func switchProcess() {
 	}
 }
 
-func main() {
+func PrintProcess() {
+
+	fmt.Println("-------------------------------------05_Process------------------------------------")
+
 	/* Printf : 1 */
 	fmt.Printf("sum_type: %T, sum_val: %v\n", sum_(1), sum_(1))
 
@@ -99,4 +102,7 @@ func main() {
 
 	/* Prinln : 6 */
 	switchProcess()
+
+	fmt.Println("-----------------------------------------------------------------------------------")
+
 }

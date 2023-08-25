@@ -18,11 +18,11 @@ float32 float64
 
 complex64 complex128
 */
-package main
+package variable
 
 import "fmt"
 
-func main() {
+func PrintVariable() {
 	/* Print : 1 */
 	// define new single var
 	var name string = "kitor"
@@ -64,19 +64,21 @@ func main() {
 	// define const
 	const Pi = 3.14159
 
-	fmt.Println("Single Var:", name, age)
+	fmt.Println("------------------------------------03_Variable------------------------------------")
 
-	fmt.Println("Multi Var", firtstName, addr, email)
+	fmt.Printf("Single Var: %v, %v\n", name, age)
+	fmt.Printf("Multi Var: %v, %v, %v\n", firtstName, addr, email)
+	fmt.Printf("Auto Define Var: %v, %v\n", autoName, autoNumber)
 
-	fmt.Println("Auto Define Var", autoName, autoNumber)
-
-	fmt.Println("Addr: %f, %d", autoAddr, &autoAddr)
-
-	fmt.Println("Exchange Var: %d, %d", a, b)
-	fmt.Println("multi define Var: %d, %d", numA, numB)
+	fmt.Printf("Addr: %v, %d\n", autoAddr, &autoAddr)
+	fmt.Printf("Exchange Var: %d, %d\n", a, b)
+	fmt.Printf("multi define Var: %d, %d\n", numA, numB)
 
 	fmt.Println("var define package", c, python, java)
 	fmt.Println("var define package", one, two, three)
 
-	fmt.Printf("const: type is %T, value is %v", Pi, Pi)
+	fmt.Printf("const: type is %T, value is %v\n", Pi, Pi)
+
+	fmt.Println("-----------------------------------------------------------------------------------")
+
 }

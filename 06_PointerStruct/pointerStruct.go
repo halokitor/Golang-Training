@@ -1,4 +1,4 @@
-package main
+package pointerstruct
 
 import (
 	"fmt"
@@ -137,7 +137,10 @@ func slicesPic_(dx, dy int) [][]uint8 {
 	return ss
 }
 
-func main() {
+func PrintPointerStruct() {
+
+	fmt.Println("---------------------------------06_PointerStruct----------------------------------")
+
 	/* Println : 1 */
 	pointer_(42, 2701)
 
@@ -173,5 +176,7 @@ func main() {
 
 	/* Println : 7 */
 	fmt.Println("slicesPic_: ", slicesPic_(5, 5))
+
+	fmt.Println("-----------------------------------------------------------------------------------")
 
 }

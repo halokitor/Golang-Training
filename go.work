@@ -1,0 +1,10 @@
+go 1.21.0
+
+use (
+	./01_HelloWorld
+	./02_ImportPkg
+	./03_Variable
+	./04_Function
+	./05_Process
+	./06_PointerStruct
+)
