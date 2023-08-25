@@ -2,7 +2,11 @@ package pointerstruct
 
 import (
 	"fmt"
+	"math"
 	"strings"
+
+	"golang.org/x/tour/pic"
+	"golang.org/x/tour/wc"
 )
 
 /* "pointer" ctl */
@@ -124,6 +128,89 @@ func sliceOfSlice() {
 	}
 }
 
+/* "Maps" section function */
+type MyVertex struct {
+	Lat, Long float64
+}
+
+var m map[string]MyVertex
+
+func PrintMaps_() {
+	m = make(map[string]MyVertex)
+	m["Bell Labs"] = MyVertex{
+		40.68433, -74.39967,
+	}
+
+	var n = map[string]MyVertex{
+		"Bell Labs": MyVertex{
+			40.68433, -74.39967,
+		},
+		"Google": MyVertex{
+			37.42202, -122.08408,
+		},
+	}
+
+	var l = map[string]MyVertex{
+		"Bell Labs": {
+			40.68433, -74.39967,
+		},
+		"Google": {
+			37.42202, -122.08408,
+		},
+	}
+
+	fmt.Println("Bell Labs'Lat & Long", m["Bell Labs"])
+	fmt.Println(n, n["Google"])
+	fmt.Println(l)
+
+	// judge element if in map
+	mm := make(map[string]int)
+	mm["request"] = 31
+	mm["answer"] = 32
+
+	fmt.Println(mm)
+	mm["answer"] = 33
+	fmt.Println(mm)
+	delete(mm, "answer")
+	fmt.Println(mm)
+
+	elem, ok := mm["answer"]
+	fmt.Println("Element val:", elem, "Present?", ok)
+
+}
+
+/* "Func Value" trans func */
+func Compute(fn func(float64, float64) float64) float64 {
+	return fn(3, 4)
+}
+
+func PrintCompute_() {
+	hypot := func(x, y float64) float64 {
+		return math.Sqrt(x*x + y*y)
+	}
+
+	fmt.Println(hypot(5, 12))
+
+	fmt.Println(Compute(hypot))
+	fmt.Println(Compute(math.Pow))
+}
+
+/* "function-Closures" func */
+func adder() func(int) int {
+	sum := 0
+	return func(i int) int {
+		sum += i
+		return sum
+	}
+}
+
+func PrintAdder_() {
+	pos, neg := adder(), adder()
+	for i := 0; i < 10; i++ {
+		fmt.Println(pos(i), neg(-1*i))
+	}
+}
+
 /* "exercise-slices" func */
 func slicesPic_(dx, dy int) [][]uint8 {
 	ss := make([][]uint8, dy)
@@ -135,6 +222,33 @@ func slicesPic_(dx, dy int) [][]uint8 {
 		ss[y] = s
 	}
 	return ss
+}
+
+/* "exercise-Maps" function */
+func WordCount(s string) map[string]int {
+	wordsField := strings.Fields(s)
+	m := make(map[string]int)
+	count := 0
+	for i := 0; i < len(wordsField); i++ {
+		for _, s := range wordsField {
+			if s == wordsField[i] {
+				count++
+			}
+		}
+		m[wordsField[i]] = count
+		count = 0
+	}
+	return m
+}
+
+/* "exercies-fibonacci-closure" func */
+func fibonacci() func() int {
+	prev1, prev2 := 0, 1
+	return func() int {
+		result := prev1
+		prev1, prev2 = prev2, prev1+prev2
+		return result
+	}
 }
 
 func PrintPointerStruct() {
@@ -176,6 +290,25 @@ func PrintPointerStruct() {
 
 	/* Println : 7 */
 	fmt.Println("slicesPic_: ", slicesPic_(5, 5))
+	pic.Show(slicesPic_)
+
+	/* Println : 8 */
+	PrintMaps_()
+
+	/* Println : 9 */
+	wc.Test(WordCount)
+
+	/* Println : 10 */
+	PrintCompute_()
+
+	/* Println : 11 */
+	PrintAdder_()
+
+	/* Println : 12 */
+	f := fibonacci()
+	for i := 0; i < 10; i++ {
+		fmt.Println(f())
+	}
 
 	fmt.Println("-----------------------------------------------------------------------------------")
 
